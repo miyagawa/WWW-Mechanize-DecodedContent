@@ -1,7 +1,7 @@
 package WWW::Mechanize::DecodedContent;
 
 use strict;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Encode ();
 use HTTP::Response::Encoding;
@@ -10,6 +10,9 @@ sub WWW::Mechanize::decoded_content {
     my $mech = shift;
     my $content = $mech->content(@_);
     return $content unless $mech->{ct} && $mech->{ct} =~ m!^text/!i;
+
+    ## WWW::Mechanize 1.50 or over calls decoded_content() to get page
+    return $content if Encode::is_utf8($content);
 
     if (my $enc = $mech->res->encoding) {
         return Encode::decode($enc, $content);
@@ -41,6 +44,9 @@ WWW::Mechanize::DecodedContent - decode Mech content using its HTTP response enc
 
 WWW::Mechanize::DecodedContent is a plugin to add I<decoded_content>
 utility method to WWW::Mechanize.
+
+B<NOTE> If you're using WWW::Mechanize 1.50 or later, just use C<<
+$mech->content >> and it will return decoded content.
 
 =head1 METHODS
 

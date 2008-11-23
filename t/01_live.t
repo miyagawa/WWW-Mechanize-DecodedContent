@@ -27,5 +27,5 @@ __END__
 --- encoding: utf-8
 
 ===
---- url: http://www.yahoo.co.jp/
+--- url: http://mixi.jp/
 --- encoding: euc-jp
