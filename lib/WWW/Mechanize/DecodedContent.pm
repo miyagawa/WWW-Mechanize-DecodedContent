@@ -45,8 +45,8 @@ WWW::Mechanize::DecodedContent - decode Mech content using its HTTP response enc
 WWW::Mechanize::DecodedContent is a plugin to add I<decoded_content>
 utility method to WWW::Mechanize.
 
-B<NOTE> If you're using WWW::Mechanize 1.50 or later, just use C<<
-$mech->content >> and it will return decoded content.
+B<NOTE> If you're using WWW::Mechanize 1.50 or later, just use
+C<< $mech->content >> and it will return decoded content.
 
 =head1 METHODS
 
